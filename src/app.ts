@@ -1,18 +1,19 @@
-import express from "express";
-import bodyParser from "body-parser";
-import cors from "cors";
-import { ContactsController } from "./controllers/ContactsController";
+import express from 'express';
+
+export class ContactsController {
+
+  static addContact(_req: express.Request, res: express.Response) {
+    res.send('Contacto agregado');
+  }
+}
 
 const app = express();
-const contactsController = new ContactsController();
+const port = 4000;
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors());
+app.use(express.json());
 
-app.post("/contact/add", (req, res) => contactsController.addContact(req, res));
+app.post('/contact/add', ContactsController.addContact);
 
-const PORT = 4000;
-app.listen(PORT, () => {
-  console.log(`Servidor corriendo en http://localhost:${PORT}`);
+app.listen(port, () => {
+  console.log(`Servidor corriendo en http://localhost:${port}`);
 });

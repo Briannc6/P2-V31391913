@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Servicio veterinario a domicilio en Venezuela - Dra. Alexandra Ortiz ofrece atención personalizada para tus mascotas en la comodidad de tu hogar">
+    <title>Veterinaria a Domicilio | Dra. Alexandra Ortiz - Cuidado profesional para tus mascotas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="active">Inicio</a>
+            <a href="about.html">Sobre Nosotros</a>
+        </nav>
+    </header>
+
+    <main role="main">
+
+        <section class="presentacion">
+            <img src="images/alexandraveterinaria.jpg" alt="Dra. Alexandra Ortiz" class="foto-perfil">
+            <div class="presentacion__contenido">
+                <h1 class="titulo">Atención Veterinaria a Domicilio para tu Mascota.</h1>
+                <p class="presentacion__contenido__texto">¡Hola! Soy la Dra. Alexandra Ortiz Médico veterinaria
+                    apasionada por brindar atención personalizada y de calidad en la comodidad de tu hogar.
+                    Con años de experiencia y un enfoque cálido y profesional, me dedico a cuidar la salud de tus
+                    mascotas donde más lo necesitan.
+                    Mi objetivo es hacer que la atención veterinaria sea más accesible y menos estresante para tus
+                    peludos amigos. Desde chequeos de rutina hasta emergencias, estoy aquí para ayudarte a mantener a tu
+                    mascota feliz y saludable.</p>
+            </div>
+        </section>
+
+        <section class="servicio">
+            <div>
+                <h2 class="servicio__titulo">Servicios:</h2>
+                <ul class="lista-servicio">
+                    <li><strong>Consulta veterinaria a domicilio</strong> - Examen general y diagnóstico en casa</li>
+                    <li><strong>Vacunación</strong> - Esquema completo de vacunas en el hogar</li>
+                    <li><strong>Desparasitación</strong> - Tratamientos internos y externos</li>
+                    <li><strong>Urgencias básicas</strong> - Atención inmediata para emergencias</li>
+                    <li><strong>Control geriátrico</strong> - Cuidado especial para mascotas mayores</li>
+                    <li><strong>Asesoría nutricional</strong> - Dietas personalizadas</li>
+                    <li><strong>Administración de medicamentos</strong> - Inyecciones, pastillas y tratamientos</li>
+                    <li><strong>Cuidados básicos</strong> - Limpieza de oídos, corte de uñas, etc.</li>
+                    <li><strong>Visitas post-operatorias</strong> - Control de cirugías en casa</li>
+                    <li><strong>Certificados de salud</strong> - Para viajes o trámites</li>
+                </ul>
+            </div>
+            <img src="images/veterinario.png" alt="veteriariaconungato" class="foto-servicio">
+        </section>
+
+        <section class="beneficio">
+            <img src="images/huella.png" alt="huelladeperro" class="foto-beneficio">
+            <div>
+                <h2 class="beneficio__titulo">Beneficios de elegir veterinaria a domicilio:</h2>
+                <ul class="lista-beneficio">
+                    <li><strong>Menos estrés para tu mascota</strong> - Evitas el trauma del transporte y la espera en
+                        clínica</li>
+                    <li><strong>Atención personalizada</strong> - Tiempo exclusivo para tu peludo sin prisas</li>
+                    <li><strong>Ambiente familiar</strong> - Diagnósticos más precisos al observar su comportamiento
+                        natural</li>
+                    <li><strong>Prevención de contagios</strong> - No hay contacto con otros animales enfermos</li>
+                    <li><strong>Comodidad para ti</strong> - Sin desplazamientos ni tiempos de espera</li>
+                    <li><strong>Emergencias más rápidas</strong> - Atención inmediata donde sea que estés</li>
+                    <li><strong>Paquetes integrales</strong> - Puedo evaluar su entorno y hacer recomendaciones
+                        específicas</li>
+                    <li><strong>Horarios flexibles</strong> - Me adapto a tu disponibilidad (incluyendo fines de semana)
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="formulario-contacto" aria-label="Formulario de contacto">
+            <h2>Formulario de Contacto</h2>
+            <form action="http://localhost:4000/contact/add" method="POST">
+                <label for="email">Correo Electrónico:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="name">Nombres:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="comment">Comentario:</label>
+                <textarea id="comment" name="comment" required></textarea>
+
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+
+        <section class="contacto" aria-label="Información de contacto">
+            <h2 class="contacto__titulo">Contáctame</h2>
+
+            <div class="contacto-item">
+                <img src="images/whatsappicono.png" alt="WhatsApp" class="icono-contacto">
+                <a href="https://wa.me/584123456789" target="_blank" class="boton-contacto">+58 412-1234567</a>
+                <span class="contacto-nota">(WhatsApp prioritario)</span>
+            </div>
+
+            <div class="contacto-item">
+                <img src="images/telefonoicono.png" alt="Teléfono" class="icono-contacto">
+                <a href="tel:+582122345678" target="_blank" class="boton-contacto">+58 212-1234567</a>
+                <span class="contacto-nota">(Llamadas directas)</span>
+            </div>
+
+            <div class="contacto-item">
+                <img src="images/instagramicono.png" alt="Instagram" class="icono-contacto">
+                <a href="https://instagram.com/dra.alexandraortiz" target="_blank"
+                    class="boton-contacto">@dra.alexandraortiz</a>
+                <span class="contacto-nota">(DM abiertos)</span>
+            </div>
+
+            <div class="contacto-item">
+                <img src="images/gmailicono.png" alt="Email" class="icono-contacto">
+                <a href="mailto:consulta@draalexandraortiz.com.ve" target="_blank"
+                    class="boton-contacto">consulta@draalexandraortiz.com.ve</a>
+            </div>
+
+            <div class="contacto-item">
+                <img src="images/gmailicono.png" alt="Email" class="icono-contacto">
+                <a href="mailto:emergencias@draalexandraortiz.com.ve" target="_blank"
+                    class="boton-contacto">emergencias@draalexandraortiz.com.ve</a>
+                <span class="contacto-nota">(Solo urgencias)</span>
+            </div>
+
+            <div class="contacto_horario"></div>
+            <p class="horario-atencion"><img src="images/relojicono.png" alt="reloj" class="icono-contacto">Horario de
+                atención: Lunes a Viernes 8:00 AM - 5:00 PM / Sábados 9:00 AM - 1:00 PM</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Dra. Alexandra Ortiz - Veterinaria a Domicilio</p>
+    </footer>
+</body>
+
+</html>

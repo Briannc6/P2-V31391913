@@ -35,42 +35,49 @@
         </section>
 
         <section class="servicio">
-            <div>
-                <h2 class="servicio__titulo">Servicios:</h2>
-                <ul class="lista-servicio">
-                    <li><strong>Consulta veterinaria a domicilio</strong> - Examen general y diagnóstico en casa</li>
-                    <li><strong>Vacunación</strong> - Esquema completo de vacunas en el hogar</li>
-                    <li><strong>Desparasitación</strong> - Tratamientos internos y externos</li>
-                    <li><strong>Urgencias básicas</strong> - Atención inmediata para emergencias</li>
-                    <li><strong>Control geriátrico</strong> - Cuidado especial para mascotas mayores</li>
-                    <li><strong>Asesoría nutricional</strong> - Dietas personalizadas</li>
-                    <li><strong>Administración de medicamentos</strong> - Inyecciones, pastillas y tratamientos</li>
-                    <li><strong>Cuidados básicos</strong> - Limpieza de oídos, corte de uñas, etc.</li>
-                    <li><strong>Visitas post-operatorias</strong> - Control de cirugías en casa</li>
-                    <li><strong>Certificados de salud</strong> - Para viajes o trámites</li>
-                </ul>
+            <div class="card">
+                <div>
+                    <h2 class="servicio__titulo">Servicios:</h2>
+                    <ul class="lista-servicio">
+                        <li><strong>Consulta veterinaria a domicilio</strong> - Examen general y diagnóstico en casa
+                        </li>
+                        <li><strong>Vacunación</strong> - Esquema completo de vacunas en el hogar</li>
+                        <li><strong>Desparasitación</strong> - Tratamientos internos y externos</li>
+                        <li><strong>Urgencias básicas</strong> - Atención inmediata para emergencias</li>
+                        <li><strong>Control geriátrico</strong> - Cuidado especial para mascotas mayores</li>
+                        <li><strong>Asesoría nutricional</strong> - Dietas personalizadas</li>
+                        <li><strong>Administración de medicamentos</strong> - Inyecciones, pastillas y tratamientos</li>
+                        <li><strong>Cuidados básicos</strong> - Limpieza de oídos, corte de uñas, etc.</li>
+                        <li><strong>Visitas post-operatorias</strong> - Control de cirugías en casa</li>
+                        <li><strong>Certificados de salud</strong> - Para viajes o trámites</li>
+                    </ul>
+                </div>
+                <img src="images/veterinario.png" alt="veterinario con un gato" class="foto-servicio">
             </div>
-            <img src="images/veterinario.png" alt="veteriariaconungato" class="foto-servicio">
         </section>
 
         <section class="beneficio">
-            <img src="images/huella.png" alt="huelladeperro" class="foto-beneficio">
-            <div>
-                <h2 class="beneficio__titulo">Beneficios de elegir veterinaria a domicilio:</h2>
-                <ul class="lista-beneficio">
-                    <li><strong>Menos estrés para tu mascota</strong> - Evitas el trauma del transporte y la espera en
-                        clínica</li>
-                    <li><strong>Atención personalizada</strong> - Tiempo exclusivo para tu peludo sin prisas</li>
-                    <li><strong>Ambiente familiar</strong> - Diagnósticos más precisos al observar su comportamiento
-                        natural</li>
-                    <li><strong>Prevención de contagios</strong> - No hay contacto con otros animales enfermos</li>
-                    <li><strong>Comodidad para ti</strong> - Sin desplazamientos ni tiempos de espera</li>
-                    <li><strong>Emergencias más rápidas</strong> - Atención inmediata donde sea que estés</li>
-                    <li><strong>Paquetes integrales</strong> - Puedo evaluar su entorno y hacer recomendaciones
-                        específicas</li>
-                    <li><strong>Horarios flexibles</strong> - Me adapto a tu disponibilidad (incluyendo fines de semana)
-                    </li>
-                </ul>
+            <div class="card">
+                <img src="images/huella.png" alt="huelladeperro" class="foto-beneficio">
+                <div>
+                    <h2 class="beneficio__titulo">Beneficios de elegir veterinaria a domicilio:</h2>
+                    <ul class="lista-beneficio">
+                        <li><strong>Menos estrés para tu mascota</strong> - Evitas el trauma del transporte y la espera
+                            en
+                            clínica</li>
+                        <li><strong>Atención personalizada</strong> - Tiempo exclusivo para tu peludo sin prisas</li>
+                        <li><strong>Ambiente familiar</strong> - Diagnósticos más precisos al observar su comportamiento
+                            natural</li>
+                        <li><strong>Prevención de contagios</strong> - No hay contacto con otros animales enfermos</li>
+                        <li><strong>Comodidad para ti</strong> - Sin desplazamientos ni tiempos de espera</li>
+                        <li><strong>Emergencias más rápidas</strong> - Atención inmediata donde sea que estés</li>
+                        <li><strong>Paquetes integrales</strong> - Puedo evaluar su entorno y hacer recomendaciones
+                            específicas</li>
+                        <li><strong>Horarios flexibles</strong> - Me adapto a tu disponibilidad (incluyendo fines de
+                            semana)
+                        </li>
+                    </ul>
+                </div>
             </div>
         </section>
 
@@ -87,6 +94,50 @@
                 <textarea id="comment" name="comment" required></textarea>
 
                 <button type="submit">Enviar</button>
+            </form>
+        </section>
+
+        <section class="formulario-pago" aria-label="Formulario de pago">
+            <h2>Formulario de Pago</h2>
+            <form action="/payment/add" method="POST">
+                <label for="service">Selecciona un servicio:</label>
+                <select id="service" name="service" required>
+                    <option value="consultas">Consultas generales</option>
+                    <option value="vacunacion">Vacunación</option>
+                    <option value="desparasitacion">Desparasitación</option>
+                </select>
+
+                <label for="email">Correo Electrónico:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="cardholder">Nombre del titular de la tarjeta:</label>
+                <input type="text" id="cardholder" name="cardholder" required>
+
+                <label for="cardnumber">Número de tarjeta:</label>
+                <input type="text" id="cardnumber" name="cardnumber" maxlength="16" pattern="\d{16}" required>
+
+                <label for="expiration">Fecha de expiración:</label>
+                <div class="expiration-fields">
+                    <input type="text" id="exp-month" name="exp-month" placeholder="MM" maxlength="2" pattern="\d{2}"
+                        required>
+                    <input type="text" id="exp-year" name="exp-year" placeholder="YYYY" maxlength="4" pattern="\d{4}"
+                        required>
+                </div>
+
+                <label for="cvv">Código de seguridad (CVV):</label>
+                <input type="text" id="cvv" name="cvv" maxlength="3" pattern="\d{3}" required>
+
+                <label for="amount">Monto a pagar:</label>
+                <input type="number" id="amount" name="amount" step="0.01" required>
+
+                <label for="currency">Moneda:</label>
+                <select id="currency" name="currency" required>
+                    <option value="USD">USD</option>
+                    <option value="EUR">EUR</option>
+                    <option value="MXN">MXN</option>
+                </select>
+
+                <button type="submit">Realizar Pago</button>
             </form>
         </section>
 

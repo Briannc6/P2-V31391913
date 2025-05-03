@@ -13,26 +13,19 @@ exports.ContactsController = void 0;
 const ContactsModel_1 = require("../models/ContactsModel");
 class ContactsController {
     constructor() {
-        this.model = new ContactsModel_1.ContactsModel();
+        this.contactsModel = new ContactsModel_1.ContactsModel();
     }
     addContact(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
+            console.log("Datos recibidos:", req.body); // Depuración
+            const { email, name, comment } = req.body;
             try {
-                const { email, name, comment } = req.body;
-                const ip_address = req.ip;
-                console.log("Datos recibidos:", { email, name, comment, ip_address });
-                if (!email || !name || !comment || !ip_address) {
-                    console.log("Faltan campos obligatorios");
-                    res.status(400).json({ message: "Todos los campos son obligatorios." });
-                    return;
-                }
-                yield this.model.addContact(email, name, comment, ip_address);
-                console.log("Contacto agregado exitosamente");
-                res.status(201).json({ message: "Contacto agregado exitosamente." });
+                yield this.contactsModel.addContact(email, name, comment, req.ip || "0.0.0.0");
+                res.status(201).json({ message: "Contacto agregado exitosamente" });
             }
             catch (error) {
                 console.error("Error al agregar el contacto:", error);
-                res.status(500).json({ message: "Error al agregar el contacto.", error });
+                res.status(500).json({ message: "Error al agregar el contacto" });
             }
         });
     }

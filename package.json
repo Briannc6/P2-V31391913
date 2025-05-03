@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Briannc6/P2_V31391913#readme",
   "dependencies": {
+    "@supabase/supabase-js": "^2.49.4",
     "body-parser": "^2.2.0",
     "cors": "^2.8.5",
     "express": "^5.1.0",

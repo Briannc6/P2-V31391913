@@ -7,7 +7,6 @@ exports.ContactsModel = void 0;
 const sqlite3_1 = __importDefault(require("sqlite3"));
 class ContactsModel {
     constructor() {
-        // Conexión a la base de datos SQLite
         this.db = new sqlite3_1.default.Database("./database/contacts.db", (err) => {
             if (err) {
                 console.error("Error al conectar con la base de datos:", err.message);
@@ -17,7 +16,6 @@ class ContactsModel {
             }
         });
     }
-    // Método para agregar un contacto a la base de datos
     addContact(email, name, comment, ipAddress) {
         return new Promise((resolve, reject) => {
             const query = `
@@ -35,7 +33,6 @@ class ContactsModel {
             });
         });
     }
-    // Método para cerrar la conexión a la base de datos (opcional)
     close() {
         this.db.close((err) => {
             if (err) {

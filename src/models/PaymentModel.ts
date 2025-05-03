@@ -1,18 +1,6 @@
-import sqlite3 from 'sqlite3';
-import { open } from 'sqlite';
+import { supabase } from '../supabaseClient';
 
 export class PaymentModel {
-  private static db: sqlite3.Database;
-
-  static async connect() {
-    if (!this.db) {
-      this.db = await open({
-        filename: './database.sqlite',
-        driver: sqlite3.Database,
-      });
-    }
-  }
-
   static async savePayment(data: {
     service: string;
     email: string;
@@ -24,21 +12,22 @@ export class PaymentModel {
     amount: number;
     currency: string;
   }) {
-    await this.connect();
-    const query = `
-      INSERT INTO payments (service, email, cardholder, cardnumber, exp_month, exp_year, cvv, amount, currency)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-    `;
-    await this.db.run(query, [
-      data.service,
-      data.email,
-      data.cardholder,
-      data.cardnumber,
-      data.exp_month,
-      data.exp_year,
-      data.cvv,
-      data.amount,
-      data.currency,
+    const { error } = await supabase.from('payments').insert([
+      {
+        service: data.service,
+        email: data.email,
+        cardholder: data.cardholder,
+        cardnumber: data.cardnumber,
+        exp_month: data.exp_month,
+        exp_year: data.exp_year,
+        cvv: data.cvv,
+        amount: data.amount,
+        currency: data.currency,
+      },
     ]);
+
+    if (error) {
+      throw new Error(`Error al guardar el pago: ${error.message}`);
+    }
   }
 }

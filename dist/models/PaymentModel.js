@@ -14,19 +14,7 @@ const supabaseClient_1 = require("../supabaseClient");
 class PaymentModel {
     static savePayment(data) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { error } = yield supabaseClient_1.supabase.from('payments').insert([
-                {
-                    service: data.service,
-                    email: data.email,
-                    cardholder: data.cardholder,
-                    cardnumber: data.cardnumber,
-                    exp_month: data.exp_month,
-                    exp_year: data.exp_year,
-                    cvv: data.cvv,
-                    amount: data.amount,
-                    currency: data.currency,
-                },
-            ]);
+            const { error } = yield supabaseClient_1.supabase.from('payments').insert([data]);
             if (error) {
                 throw new Error(`Error al guardar el pago: ${error.message}`);
             }

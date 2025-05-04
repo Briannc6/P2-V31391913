@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const PaymentModel_1 = require("./models/PaymentModel");
-const ContactModel_1 = require("./models/ContactModel");
+const ContactsModel_1 = require("./models/ContactsModel");
 function testPaymentModel() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
@@ -40,7 +40,7 @@ function testPaymentModel() {
 function testContactModel() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            yield ContactModel_1.ContactModel.saveContact({
+            yield ContactsModel_1.ContactModel.saveContact({
                 email: 'contact@example.com',
                 name: 'Jane Doe',
                 comment: 'Este es un comentario de prueba.',

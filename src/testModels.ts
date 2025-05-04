@@ -1,5 +1,5 @@
 import { PaymentModel } from './models/PaymentModel';
-import { ContactModel } from './models/supabaseModel';
+import { ContactModel } from './models/ContactsModel';
 
 async function testPaymentModel() {
   try {

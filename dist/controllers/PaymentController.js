@@ -25,7 +25,8 @@ class PaymentController {
                     !cvv ||
                     !amount ||
                     !currency) {
-                    return res.status(400).json({ message: 'Todos los campos son obligatorios.' });
+                    res.status(400).json({ message: 'Todos los campos son obligatorios.' });
+                    return;
                 }
                 yield PaymentModel_1.PaymentModel.savePayment({
                     service,

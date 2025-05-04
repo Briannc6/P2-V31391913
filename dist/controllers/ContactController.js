@@ -9,16 +9,19 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ContactModel = void 0;
-const supabaseClient_1 = require("../supabaseClient");
-class ContactModel {
-    static saveContact(data) {
+exports.ContactController = void 0;
+class ContactController {
+    static addContact(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { error } = yield supabaseClient_1.supabase.from('contacts').insert([data]);
-            if (error) {
-                throw new Error(`Error al guardar el contacto: ${error.message}`);
+            try {
+                const { email, name, comment } = req.body;
+                console.log(`Contacto recibido: ${email}, ${name}, ${comment}`);
+                res.status(201).json({ message: 'Contacto agregado exitosamente' });
+            }
+            catch (error) {
+                res.status(500).json({ error: 'Error al agregar el contacto' });
             }
         });
     }
 }
-exports.ContactModel = ContactModel;
+exports.ContactController = ContactController;

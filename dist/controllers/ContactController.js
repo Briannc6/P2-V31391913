@@ -10,16 +10,22 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ContactController = void 0;
+const ContactsModel_1 = require("../models/ContactsModel");
 class ContactController {
     static addContact(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const { email, name, comment } = req.body;
-                console.log(`Contacto recibido: ${email}, ${name}, ${comment}`);
-                res.status(201).json({ message: 'Contacto agregado exitosamente' });
+                if (!email || !name || !comment) {
+                    res.status(400).json({ message: 'Todos los campos son obligatorios.' });
+                    return;
+                }
+                yield ContactsModel_1.ContactModel.saveContact({ email, name, comment });
+                res.status(201).json({ message: 'Contacto agregado exitosamente.' });
             }
             catch (error) {
-                res.status(500).json({ error: 'Error al agregar el contacto' });
+                console.error('Error al agregar el contacto:', error);
+                res.status(500).json({ message: 'Error al agregar el contacto.' });
             }
         });
     }

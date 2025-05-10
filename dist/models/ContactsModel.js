@@ -10,14 +10,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ContactModel = void 0;
-const supabaseClient_1 = require("../supabaseClient");
+const database_1 = require("../database");
 class ContactModel {
     static saveContact(data) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { error } = yield supabaseClient_1.supabase.from('contacts').insert([data]);
-            if (error) {
-                throw new Error(`Error al guardar el contacto: ${error.message}`);
-            }
+            const db = yield (0, database_1.openDb)();
+            yield db.run(`INSERT INTO contacts (email, name, comment) VALUES (?, ?, ?)`, [data.email, data.name, data.comment]);
         });
     }
 }

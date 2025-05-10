@@ -8,25 +8,18 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PaymentModel = void 0;
-const database_1 = require("../database");
-class PaymentModel {
-    static savePayment(data) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const db = yield (0, database_1.openDb)();
-            yield db.run(`INSERT INTO payments (service, email, cardholder, cardnumber, exp_month, exp_year, cvv, amount, currency) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`, [
-                data.service,
-                data.email,
-                data.cardholder,
-                data.cardnumber,
-                data.exp_month,
-                data.exp_year,
-                data.cvv,
-                data.amount,
-                data.currency,
-            ]);
+exports.openDb = openDb;
+const sqlite3_1 = __importDefault(require("sqlite3"));
+const sqlite_1 = require("sqlite");
+function openDb() {
+    return __awaiter(this, void 0, void 0, function* () {
+        return (0, sqlite_1.open)({
+            filename: './veterinaria.db',
+            driver: sqlite3_1.default.Database,
         });
-    }
+    });
 }
-exports.PaymentModel = PaymentModel;

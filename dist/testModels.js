@@ -9,11 +9,46 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const PaymentModel_1 = require("./models/PaymentModel");
+const database_1 = require("./database");
 const ContactsModel_1 = require("./models/ContactsModel");
-function testPaymentModel() {
+const PaymentModel_1 = require("./models/PaymentModel");
+function testDatabase() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
+            const db = yield (0, database_1.openDb)();
+            // Crea las tablas si no existen
+            yield db.exec(`
+      CREATE TABLE IF NOT EXISTS contacts (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        email TEXT NOT NULL,
+        name TEXT NOT NULL,
+        comment TEXT NOT NULL,
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+      );
+
+      CREATE TABLE IF NOT EXISTS payments (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        service TEXT NOT NULL,
+        email TEXT NOT NULL,
+        cardholder TEXT NOT NULL,
+        cardnumber TEXT NOT NULL,
+        exp_month TEXT NOT NULL,
+        exp_year TEXT NOT NULL,
+        cvv TEXT NOT NULL,
+        amount REAL NOT NULL,
+        currency TEXT NOT NULL,
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+      );
+    `);
+            console.log('Tablas creadas o verificadas.');
+            // Prueba guardar un contacto
+            yield ContactsModel_1.ContactModel.saveContact({
+                email: 'test@example.com',
+                name: 'John Doe',
+                comment: 'Este es un comentario de prueba.',
+            });
+            console.log('Contacto guardado exitosamente.');
+            // Prueba guardar un pago
             yield PaymentModel_1.PaymentModel.savePayment({
                 service: 'consultas',
                 email: 'test@example.com',
@@ -25,44 +60,19 @@ function testPaymentModel() {
                 amount: 50.0,
                 currency: 'USD',
             });
-            console.log('Pago guardado exitosamente');
+            console.log('Pago guardado exitosamente.');
+            // Lee los datos de las tablas
+            const contacts = yield db.all(`SELECT * FROM contacts`);
+            console.log('Contactos:', contacts);
+            const payments = yield db.all(`SELECT * FROM payments`);
+            console.log('Pagos:', payments);
+            // Cierra la conexión
+            yield db.close();
+            console.log('Conexión cerrada.');
         }
         catch (error) {
-            if (error instanceof Error) {
-                console.error(`Error al guardar el pago: ${error.message}`);
-            }
-            else {
-                console.error('Error al guardar el pago: Error desconocido');
-            }
+            console.error('Error durante la prueba de la base de datos:', error);
         }
     });
 }
-function testContactModel() {
-    return __awaiter(this, void 0, void 0, function* () {
-        try {
-            yield ContactsModel_1.ContactModel.saveContact({
-                email: 'contact@example.com',
-                name: 'Jane Doe',
-                comment: 'Este es un comentario de prueba.',
-            });
-            console.log('Contacto guardado exitosamente');
-        }
-        catch (error) {
-            if (error instanceof Error) {
-                console.error(`Error al guardar el contacto: ${error.message}`);
-            }
-            else {
-                console.error('Error al guardar el contacto: Error desconocido');
-            }
-        }
-    });
-}
-function runTests() {
-    return __awaiter(this, void 0, void 0, function* () {
-        console.log('Iniciando pruebas...');
-        yield testPaymentModel();
-        yield testContactModel();
-        console.log('Pruebas finalizadas.');
-    });
-}
-runTests();
+testDatabase();
